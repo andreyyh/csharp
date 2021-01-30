@@ -1,0 +1,101 @@
+using System;
+using System.Threading;
+
+namespace Aplicação_Login
+{
+    class Program
+    {
+        static void startUp()
+        {
+            // Opções
+            Console.WriteLine("Registre-se digitando 1");
+            string opt1 = Console.ReadLine(); // Pegar a resposta e atribuir em uma nova variável
+            Console.WriteLine(opt1);
+            switch (opt1) // Começo das verificações
+            {
+                case "1": // Se for 1 ↓
+                    goto Register;
+                default:
+                    Console.Clear(); // Limpar o console
+                    Console.WriteLine("Opção inválida.");
+                    Thread.Sleep(1000); // Aguardar (milisegundos) Obs: Precisa do using System.Threading;
+                    Environment.Exit(-1);
+                    break;
+            } // Fim das verificações
+
+        Register:
+            Console.Clear();
+            Console.WriteLine("Escolha um nome de usuário");
+            string user1 = Console.ReadLine();
+            Console.Clear();
+            if (user1 == "")
+            {
+                Console.WriteLine("Não foi possivel criar um nome em branco.");
+                Thread.Sleep(1500);
+                goto Register;
+            }
+            else
+            {
+                Console.WriteLine("Escolha uma senha");
+            }
+            string pass1 = Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("Escreva sua senha novamente");
+            string password = Console.ReadLine();
+            Console.Clear();
+
+            if (pass1 == "" || password == "")
+            {
+                Console.WriteLine("Não foi possível criar uma senha em branco.");
+                Thread.Sleep(1500);
+                goto Register;
+            }
+            if (pass1 != password)
+            {
+                Console.WriteLine("As senhas não se coincidem");
+                Thread.Sleep(1500);
+                goto Register;
+            }
+            else
+            {
+                Console.WriteLine("Conta criada com sucesso bem vindo " + user1 + " Faça login para continuar.");
+
+                Thread.Sleep(2500);
+                Console.Clear();
+                Console.WriteLine("Digite seu nome de usuário:");
+                string user2 = Console.ReadLine();
+                Console.Clear();
+                if (user2 != user1)
+                {
+                    Console.WriteLine("Nome de usuário incorreto.");
+                    Thread.Sleep(2500);
+                    goto Register;
+                }
+                else
+                {
+                    Console.WriteLine("Digite sua senha:");
+                    string pass2 = Console.ReadLine();
+                    Console.Clear();
+                    if (pass2 != password && pass2 != pass1)
+                    {
+                        Console.WriteLine("Senha incorreta.");
+                        Thread.Sleep(2500);
+                        goto Register;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Bem-Vindo " + user1 + " aproveite seu programa.");
+                        Console.WriteLine("Development by Andrey");
+                        Console.ReadKey();
+                    }
+                }
+
+            }
+
+        }
+        static void Main(string[] args)
+        {
+            startUp();
+        }
+    }
+}
