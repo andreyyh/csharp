@@ -1,2 +1,7 @@
 # csharp
-C# Simples console login
+C# Register Console Application 
+
+{
+  "dev": "Andrey",
+  "license": none
+}
